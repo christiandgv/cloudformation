@@ -42,7 +42,7 @@ Resources:
         Enabled: true
         HttpVersion: http2
         Origins:
-          - DomainName: 'oficinaenlinea.liberty.ec'
+          - DomainName: 'oficinaenlinea.liberty.ec.s3.amazonaws.com'
             Id: the-s3-bucket
             S3OriginConfig:
               OriginAccessIdentity:

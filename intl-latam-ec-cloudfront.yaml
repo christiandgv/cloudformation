@@ -42,7 +42,7 @@ Resources:
         Enabled: true
         HttpVersion: http2
         Origins:
-          - DomainName: 'intermediarios-dev.liberty.ec'
+          - DomainName: 'intermediarios-dev.liberty.ec.s3.amazonaws.com'
             Id: the-s3-bucket
             S3OriginConfig:
               OriginAccessIdentity:
