@@ -11,7 +11,7 @@ Resources:
 Outputs:
   accessIdentity:
     Value: 
-        Fn::GetAtt [TheCloudFrontOriginAccessIdentity.Arn]
+        Fn::GetAtt TheCloudFrontOriginAccessIdentity.Arn
     Description: arn of lambda intllatamecsendmassivemail
     Export:
         Name: "TheCloudFrontOriginAccessIdentity"
