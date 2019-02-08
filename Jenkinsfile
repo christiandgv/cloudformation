@@ -13,7 +13,7 @@ node('linux') {
     } else if (countryParams.countryEnv.toLowerCase() == "prod")
     {
         echo "Doing Dev in prod"
-        cfnDeploy(file:'intl-latam-ec-cloudfront.yaml', stackName:"${StackName}")
+        cfnDeploy(file:'intl-latam-ec-cloudfront-prod.yaml', stackName:"${StackName}")
     }
    
     
