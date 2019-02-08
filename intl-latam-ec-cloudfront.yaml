@@ -43,11 +43,14 @@ Resources:
         Enabled: true
         HttpVersion: http2
         Origins:
-          - DomainName: 'intermediarios-dev.liberty.ec.s3.amazonaws.com'
+          - DomainName:
+              !Join [ "", [ 
+                - Ref BucketName, ".s3.amazonaws.com" ] ]
             Id: the-s3-bucket
             S3OriginConfig:
               OriginAccessIdentity:
-                Fn::Join [ "", [ "origin-access-identity/cloudfront/", !Ref TheCloudFrontOriginAccessIdentity ] ]
+                !Join [ "", [ "origin-access-identity/cloudfront/", 
+                    - Ref TheCloudFrontOriginAccessIdentity ] ]
         PriceClass: 'PriceClass_All'
         ViewerCertificate:
           CloudFrontDefaultCertificate: true
