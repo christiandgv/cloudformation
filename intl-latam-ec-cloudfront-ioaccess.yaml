@@ -8,7 +8,7 @@ Resources:
       CloudFrontOriginAccessIdentityConfig:
         Comment: "cloudfront de  intermediarios-dev.liberty.ec"
 
-   TheBucketPolicy:
+  TheBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
       Bucket: 'intermediarios-dev.liberty.ec'
