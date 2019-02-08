@@ -55,22 +55,4 @@ Resources:
         - Key: Domain
           Value: 'oficinaenlinea.liberty.ec'
 
-  TheCloudFrontOriginAccessIdentity:
-    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
-    Properties:
-      CloudFrontOriginAccessIdentityConfig:
-        Comment: "cloudfront de  oficinaenlinea.liberty.ec"
- 
-  TheBucketPolicy:
-    Type: AWS::S3::BucketPolicy
-    Properties:
-      Bucket: 'oficinaenlinea.liberty.ec'
-      PolicyDocument:
-        Statement:
-          -
-            Action:
-              - s3:GetObject
-            Effect: Allow
-            Resource: Fn::Join [ "", [ "arn:aws:s3:::", 'oficinaenlinea.liberty.ec', "/*" ] ]
-            Principal:
-              CanonicalUser: Fn::GetAtt TheCloudFrontOriginAccessIdentity.S3CanonicalUserId
+  
