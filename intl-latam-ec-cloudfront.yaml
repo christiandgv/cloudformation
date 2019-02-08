@@ -22,7 +22,7 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
-        Aliases: 'intermediarios-dev.liberty.ec'
+        Aliases: ['intermediarios-dev.liberty.ec']
         DefaultCacheBehavior:
           Compress: true
           ForwardedValues:
