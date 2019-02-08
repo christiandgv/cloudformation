@@ -8,6 +8,20 @@ Resources:
       CloudFrontOriginAccessIdentityConfig:
         Comment: "cloudfront de  intermediarios-dev.liberty.ec"
 
+   TheBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: 'intermediarios-dev.liberty.ec'
+      PolicyDocument:
+        Statement:
+          -
+            Action:
+              - s3:GetObject
+            Effect: Allow
+            Resource: Fn::Join [ "", [ "arn:aws:s3:::", 'intermediarios-dev.liberty.ec', "/*" ] ]
+            Principal:
+              CanonicalUser: Fn::GetAtt TheCloudFrontOriginAccessIdentity.S3CanonicalUserId        
+        
 Outputs:
   accessIdentity:
     Value: 
