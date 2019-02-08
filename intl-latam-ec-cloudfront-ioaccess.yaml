@@ -19,8 +19,7 @@ Resources:
               - s3:GetObject
             Effect: Allow
             Resource: Fn::Join [ "", [ "arn:aws:s3:::", 'intermediarios-dev.liberty.ec', "/*" ] ]
-            Principal:
-              CanonicalUser: Fn::GetAtt TheCloudFrontOriginAccessIdentity.S3CanonicalUserId        
+            Principal: '*'
         
 Outputs:
   accessIdentity:
