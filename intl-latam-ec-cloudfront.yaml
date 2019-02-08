@@ -47,8 +47,8 @@ Resources:
               Fn::Join [ "", [Ref: BucketName, ".s3.amazonaws.com" ] ]
             Id: the-s3-bucket
             S3OriginConfig:
-              OriginAccessIdentity:
-                Fn::Join [ "", [ "origin-access-identity/cloudfront/", Ref TheCloudFrontOriginAccessIdentity ] ]
+              OriginKeepaliveTimeout: 3000
+              OriginReadTimeout: 3000
         PriceClass: 'PriceClass_All'
         ViewerCertificate:
           CloudFrontDefaultCertificate: true
