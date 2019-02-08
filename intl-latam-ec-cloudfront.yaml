@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: 2010-09-09
+AWSTemplateFormatVersion: "2010-09-09"
 Description: >
   Resources for hosting a static website on Amazon Simple Storage Service (S3) & CloudFront.
 Parameters:
@@ -16,13 +16,13 @@ Parameters:
       - 'PriceClass_All'
   BucketName:
     Type: String
-    Default: intermediarios-uat.liberty.ec
+    Default: intermediarios-dev.liberty.ec
 Resources:
   TheCloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
-        Aliases: Fn::Ref BucketName
+        Aliases: 'intermediarios-dev.liberty.ec'
         DefaultCacheBehavior:
           Compress: true
           ForwardedValues:
@@ -54,24 +54,24 @@ Resources:
           MinimumProtocolVersion: TLSv1
       Tags:
         - Key: Domain
-          Value: Fn::Ref DomainName
+          Value: 'intermediarios-dev.liberty.ec'
 
   TheCloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
       CloudFrontOriginAccessIdentityConfig:
-        Comment: Fn::Sub 'CloudFront form for ${DomainName}'
+        Comment: "cloudfront de  intermediarios-dev.liberty.ec"
  
   TheBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
-      Bucket: Fn::Ref BucketName
+      Bucket: 'intermediarios-dev.liberty.ec'
       PolicyDocument:
         Statement:
           -
             Action:
               - s3:GetObject
             Effect: Allow
-            Resource: Fn::Join [ "", [ "arn:aws:s3:::", !Ref BucketName, "/*" ] ]
+            Resource: Fn::Join [ "", [ "arn:aws:s3:::", 'intermediarios-dev.liberty.ec', "/*" ] ]
             Principal:
               CanonicalUser: Fn::GetAtt TheCloudFrontOriginAccessIdentity.S3CanonicalUserId
