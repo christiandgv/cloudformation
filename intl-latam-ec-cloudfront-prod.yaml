@@ -44,9 +44,6 @@ Resources:
         Origins:
           - DomainName: 'oficinaenlinea.liberty.ec.s3.amazonaws.com'
             Id: the-s3-bucket
-            S3OriginConfig:
-              OriginAccessIdentity:
-                Fn::Join [ "", [ "origin-access-identity/cloudfront/", Fn::Ref TheCloudFrontOriginAccessIdentity ] ]
         PriceClass: 'PriceClass_All'
         ViewerCertificate:
           CloudFrontDefaultCertificate: true
@@ -55,12 +52,6 @@ Resources:
         - Key: Domain
           Value: 'oficinaenlinea.liberty.ec'
 
-  TheCloudFrontOriginAccessIdentity:
-    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
-    Properties:
-      CloudFrontOriginAccessIdentityConfig:
-        Comment: "cloudfront de  oficinaenlinea.liberty.ec"
- 
   TheBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
