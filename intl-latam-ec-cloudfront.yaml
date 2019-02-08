@@ -5,7 +5,7 @@ Parameters:
   DomainName:
     Type: String
     Description: The website domain name.
-    Default: intermediarios-uat.liberty.ec
+    Default: oficinaenlinea.liberty.ec
   PriceClass:
     Type: String
     Description: The CloudFront distribution price class
@@ -16,13 +16,13 @@ Parameters:
       - 'PriceClass_All'
   BucketName:
     Type: String
-    Default: intermediarios-dev.liberty.ec
+    Default: oficinaenlinea.liberty.ec
 Resources:
   TheCloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
-        Aliases: ['intermediarios-dev.liberty.ec']
+        Aliases: ['oficinaenlinea.liberty.ec']
         DefaultCacheBehavior:
           Compress: true
           ForwardedValues:
@@ -54,24 +54,24 @@ Resources:
           MinimumProtocolVersion: TLSv1
       Tags:
         - Key: Domain
-          Value: 'intermediarios-dev.liberty.ec'
+          Value: 'oficinaenlinea.liberty.ec'
 
   TheCloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
       CloudFrontOriginAccessIdentityConfig:
-        Comment: "cloudfront de  intermediarios-dev.liberty.ec"
+        Comment: "cloudfront de  oficinaenlinea.liberty.ec"
  
   TheBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
-      Bucket: 'intermediarios-dev.liberty.ec'
+      Bucket: 'oficinaenlinea.liberty.ec'
       PolicyDocument:
         Statement:
           -
             Action:
               - s3:GetObject
             Effect: Allow
-            Resource: Fn::Join [ "", [ "arn:aws:s3:::", 'intermediarios-dev.liberty.ec', "/*" ] ]
+            Resource: Fn::Join [ "", [ "arn:aws:s3:::", 'oficinaenlinea.liberty.ec', "/*" ] ]
             Principal:
               CanonicalUser: Fn::GetAtt TheCloudFrontOriginAccessIdentity.S3CanonicalUserId
