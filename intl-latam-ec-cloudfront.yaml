@@ -42,8 +42,7 @@ Resources:
         Enabled: true
         HttpVersion: http2
         Origins:
-          - DomainName:
-              Fn::Join [ "", [ Fn::Ref BucketName, ".s3.amazonaws.com" ] ]
+          - DomainName: 'oficinaenlinea.liberty.ec'
             Id: the-s3-bucket
             S3OriginConfig:
               OriginAccessIdentity:
