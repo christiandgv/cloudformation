@@ -45,7 +45,7 @@ Resources:
           - DomainName: 'oficinaenlinea.liberty.ec.s3.amazonaws.com'
             Id: the-s3-bucket
             S3OriginConfig:
-              OriginAccessIdentity: 'origin-access-identity/cloudfront/E31739E2TWV5Y9'
+              OriginAccessIdentity: 'origin-access-identity/cloudfront/E11I3N8ZZW7BTP'
                 
         PriceClass: 'PriceClass_All'
         ViewerCertificate:
