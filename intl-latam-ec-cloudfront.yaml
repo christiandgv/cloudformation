@@ -44,8 +44,7 @@ Resources:
         HttpVersion: http2
         Origins:
           - DomainName:
-              !Join [ "", [ 
-                - Ref BucketName, ".s3.amazonaws.com" ] ]
+              Fn::Join [ "", [Ref: BucketName, ".s3.amazonaws.com" ] ]
             Id: the-s3-bucket
             S3OriginConfig:
               OriginAccessIdentity:
