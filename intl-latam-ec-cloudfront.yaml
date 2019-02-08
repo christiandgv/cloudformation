@@ -23,7 +23,7 @@ Resources:
     Properties:
       DistributionConfig:
         Aliases: 
-            Ref DomainName
+            - Ref DomainName
         DefaultCacheBehavior:
           Compress: true
           ForwardedValues:
