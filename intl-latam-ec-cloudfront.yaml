@@ -22,7 +22,7 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
-        Aliases: !Ref DomainName
+        Aliases: Fn::Ref BucketName
         DefaultCacheBehavior:
           Compress: true
           ForwardedValues:
