@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Resources for hosting a static website on Amazon Simple Storage Service (S3) & CloudFront.
+Resources:
+  TheCloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: "cloudfront de  intermediarios-dev.liberty.ec"
+
+Outputs:
+  accessIdentity:
+    Value: 
+        !GetAtt TheCloudFrontOriginAccessIdentity.Arn
+    Description: arn of lambda intllatamecsendmassivemail
+    Export:
+        Name: "TheCloudFrontOriginAccessIdentity"
