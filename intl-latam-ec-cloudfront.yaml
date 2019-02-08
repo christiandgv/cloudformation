@@ -44,10 +44,7 @@ Resources:
         Origins:
           - DomainName:
               Fn::Join [ "", ['intermediarios-dev.liberty.ec', ".s3.amazonaws.com" ] ]
-            Id: the-s3-bucket
-            S3OriginConfig:
-              OriginKeepaliveTimeout: 3000
-              OriginReadTimeout: 3000
+              Id: the-s3-bucket
         PriceClass: 'PriceClass_All'
         ViewerCertificate:
           CloudFrontDefaultCertificate: true
