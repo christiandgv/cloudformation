@@ -18,6 +18,26 @@ Parameters:
     Type: String
     Default: intermediarios-dev.liberty.ec
 Resources:
+
+  TheCloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: "cloudfront de  intermediarios-dev.liberty.ec"
+ 
+  TheBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: 'intermediarios-dev.liberty.ec'
+      PolicyDocument:
+        Statement:
+          -
+            Action:
+              - s3:GetObject
+            Effect: Allow
+            Resource: "arn:aws:s3:::intermediarios-dev.liberty.ec/*"
+            Principal:
+              CanonicalUser: Fn::GetAtt TheCloudFrontOriginAccessIdentity.S3CanonicalUserId
   TheCloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
@@ -55,22 +75,4 @@ Resources:
         - Key: Domain
           Value: 'intermediarios-dev.liberty.ec'
 
-  TheCloudFrontOriginAccessIdentity:
-    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
-    Properties:
-      CloudFrontOriginAccessIdentityConfig:
-        Comment: "cloudfront de  intermediarios-dev.liberty.ec"
- 
-  TheBucketPolicy:
-    Type: AWS::S3::BucketPolicy
-    Properties:
-      Bucket: 'intermediarios-dev.liberty.ec'
-      PolicyDocument:
-        Statement:
-          -
-            Action:
-              - s3:GetObject
-            Effect: Allow
-            Resource: Fn::Join [ "", [ "arn:aws:s3:::", 'intermediarios-dev.liberty.ec', "/*" ] ]
-            Principal:
-              CanonicalUser: Fn::GetAtt TheCloudFrontOriginAccessIdentity.S3CanonicalUserId
+  
