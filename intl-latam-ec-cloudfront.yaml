@@ -45,7 +45,8 @@ Resources:
           - DomainName: 'intermediarios-dev.liberty.ec.s3.amazonaws.com'
             Id: the-s3-bucket
             S3OriginConfig:
-              OriginAccessIdentity: 'origin-access-identity/cloudfront/E31739E2TWV5Y9'
+              OriginAccessIdentity: 
+                Fn::Join [ "", [ "origin-access-identity/cloudfront/", !Ref TheCloudFrontOriginAccessIdentity ] ]
                 
         PriceClass: 'PriceClass_All'
         ViewerCertificate:
