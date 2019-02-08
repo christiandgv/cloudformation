@@ -42,9 +42,10 @@ Resources:
         Enabled: true
         HttpVersion: http2
         Origins:
-          - DomainName:
-              Fn::Join [ "", ['intermediarios-dev.liberty.ec', ".s3.amazonaws.com" ] ]
+            DomainName: Fn::Join [ "", ['intermediarios-dev.liberty.ec', ".s3.amazonaws.com" ] ]
             Id: the-s3-bucket
+            S3OriginConfig:
+            OriginAccessIdentity: origin-access-identity/cloudfront/E31739E2TWV5Y9
         PriceClass: 'PriceClass_All'
         ViewerCertificate:
           CloudFrontDefaultCertificate: true
