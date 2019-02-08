@@ -48,8 +48,7 @@ Resources:
             Id: the-s3-bucket
             S3OriginConfig:
               OriginAccessIdentity:
-                !Join [ "", [ "origin-access-identity/cloudfront/", 
-                    - Ref TheCloudFrontOriginAccessIdentity ] ]
+                Fn::Join [ "", [ "origin-access-identity/cloudfront/", Ref: TheCloudFrontOriginAccessIdentity ] ]
         PriceClass: 'PriceClass_All'
         ViewerCertificate:
           CloudFrontDefaultCertificate: true
