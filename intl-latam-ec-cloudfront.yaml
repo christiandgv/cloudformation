@@ -43,35 +43,35 @@ Resources:
         HttpVersion: http2
         Origins:
           - DomainName:
-              !Join [ "", [ !Ref BucketName, ".s3.amazonaws.com" ] ]
+              Fn::Join [ "", [ Fn::Ref BucketName, ".s3.amazonaws.com" ] ]
             Id: the-s3-bucket
             S3OriginConfig:
               OriginAccessIdentity:
-                !Join [ "", [ "origin-access-identity/cloudfront/", !Ref TheCloudFrontOriginAccessIdentity ] ]
-        PriceClass: !Ref PriceClass
+                Fn::Join [ "", [ "origin-access-identity/cloudfront/", Fn::Ref TheCloudFrontOriginAccessIdentity ] ]
+        PriceClass: Fn::Ref PriceClass
         ViewerCertificate:
           CloudFrontDefaultCertificate: true
           MinimumProtocolVersion: TLSv1
       Tags:
         - Key: Domain
-          Value: !Ref DomainName
+          Value: Fn::Ref DomainName
 
   TheCloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
       CloudFrontOriginAccessIdentityConfig:
-        Comment: !Sub 'CloudFront form for ${DomainName}'
+        Comment: Fn::Sub 'CloudFront form for ${DomainName}'
  
   TheBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
-      Bucket: !Ref BucketName
+      Bucket: Fn::Ref BucketName
       PolicyDocument:
         Statement:
           -
             Action:
               - s3:GetObject
             Effect: Allow
-            Resource: !Join [ "", [ "arn:aws:s3:::", !Ref BucketName, "/*" ] ]
+            Resource: Fn::Join [ "", [ "arn:aws:s3:::", !Ref BucketName, "/*" ] ]
             Principal:
-              CanonicalUser: !GetAtt TheCloudFrontOriginAccessIdentity.S3CanonicalUserId
+              CanonicalUser: Fn::GetAtt TheCloudFrontOriginAccessIdentity.S3CanonicalUserId
