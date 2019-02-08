@@ -48,7 +48,7 @@ Resources:
             S3OriginConfig:
               OriginAccessIdentity:
                 Fn::Join [ "", [ "origin-access-identity/cloudfront/", Fn::Ref TheCloudFrontOriginAccessIdentity ] ]
-        PriceClass: Fn::Ref PriceClass
+        PriceClass: 'PriceClass_All'
         ViewerCertificate:
           CloudFrontDefaultCertificate: true
           MinimumProtocolVersion: TLSv1
