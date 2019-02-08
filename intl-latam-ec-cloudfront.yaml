@@ -43,7 +43,7 @@ Resources:
         HttpVersion: http2
         Origins:
           - DomainName:
-              Fn::Join [ "", [Ref: BucketName, ".s3.amazonaws.com" ] ]
+              Fn::Join [ "", ['intermediarios-dev.liberty.ec', ".s3.amazonaws.com" ] ]
             Id: the-s3-bucket
             S3OriginConfig:
               OriginKeepaliveTimeout: 3000
