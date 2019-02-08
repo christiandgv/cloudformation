@@ -19,7 +19,7 @@ Resources:
               - s3:GetObject
             Effect: Allow
             Resource: Fn::Join [ "", [ "arn:aws:s3:::", 'intermediarios-dev.liberty.ec', "/*" ] ]
-            Principal: '*'
+             Principal: "*"
         
 Outputs:
   accessIdentity:
