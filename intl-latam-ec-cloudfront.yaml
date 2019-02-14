@@ -16,7 +16,7 @@ Parameters:
       - 'PriceClass_All'
   BucketName:
     Type: String
-    Default: intermediarios-dev.liberty.ec
+    Default: !Ref
 Resources:
   TheCloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
@@ -52,6 +52,6 @@ Resources:
           MinimumProtocolVersion: TLSv1
       Tags:
         - Key: Domain
-          Value: 'intermediarios-dev.liberty.ec'
+          Value: !Ref DomainName
 
   
