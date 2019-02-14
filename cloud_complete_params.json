@@ -5,7 +5,7 @@
         "DomainName": {
             "Type": "String",
             "Description": "The website domain name.",
-            "Default": "intermediarios-uat.liberty.ec"
+            "Default": "www.libertylatam.tk"
         },
         "PriceClass": {
             "Type": "String",
@@ -19,7 +19,7 @@
         },
         "BucketName": {
             "Type": "String",
-            "Default": "intermediarios-uat.liberty.ec"
+            "Default": "www.libertylatam.tk"
         }
     },
     "Resources": {
