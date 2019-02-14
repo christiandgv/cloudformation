@@ -5,7 +5,7 @@
         "TableDemo": {
             "Type": "String",
             "Description": "test table domain",
-            "Default": "test-table-dynamo"
+            "Default": "testTableDynamo"
         }
     },
 
