@@ -9,6 +9,6 @@ node('linux') {
     if (countryParams.countryEnv.toLowerCase() == "dev")
     {
         echo "Doing Dev deploy"
-		cfnDeploy(file:'io_access.json', StackName:'${StackName}', tableDemo:"${tableDemo}")
+		cfnDeploy(file:'io_access.json', stackName:'${StackName}', TableDemo:"${tableDemo}")
     }
 }
