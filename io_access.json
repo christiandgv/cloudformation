@@ -2,7 +2,7 @@
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "Resources for hosting a static website on Amazon Simple Storage Service (S3) & CloudFront.\n",
     "Parameters": {
-        "tableDemo": {
+        "TableDemo": {
             "Type": "String",
             "Description": "test table domain",
             "Default": "test-table-dynamo"
@@ -14,7 +14,7 @@
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
                 "TableName": {
-                    "Ref": "tableDemo"
+                    "Ref": "TableDemo"
                 },
 
                 "AttributeDefinitions": [
