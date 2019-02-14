@@ -9,7 +9,6 @@ node('linux') {
     if (countryParams.countryEnv.toLowerCase() == "dev")
     {
         echo "Doing Dev deploy"
-		cfnDeploy(file:'intl-latam-ec-cloudfront-ioaccess.yaml', stackName:'ioaccess', tableDemo:"${tableDemo}")
-        //cfnDeploy(file:'intl-latam-ec-cloudfront.yaml', stackName:"${StackName}")
+		cfnDeploy(file:'intl-latam-ec-cloudfront-ioaccess.yaml', stackName:'${stackName}', tableDemo:"${tableDemo}")
     }
 }
